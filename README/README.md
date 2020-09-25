@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-/CloudInfrastucture/README/Images/ELK)
+/CloudInfrastructure/README/Images/ELK)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YAML file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -68,36 +68,41 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
 | Jump Box | Gateway  | 10.0.0.4   | Linux            |
-| Web1     |          | 10.0.0.7   |                  |
-| Web2     |          | 10.0.0.8   |                  |
-| Web3     |          | 10.0.0.9   |                  |
-| Elk-box  |          | 10.1.0.4   |                  |
+| Web1     | Container| 10.0.0.7   | Linux            |
+| Web2     | Container| 10.0.0.8   | Linux            |
+| Web3     | Container| 10.0.0.9   | Linux            |
+| Elk-box  | log file and monitor | 10.1.0.4   | Linux            |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - 98.240.225.102
 
-Machines within the network can only be accessed by 10.0.0.4.
-- Which machine did you allow to access your ELK VM? What was its IP address? Web1, 40.122.71.120
+Machines within the network can only be accessed by SSH.
+- Which machine did you allow to access your ELK VM? What was its IP address? 
+Jump Box: 10.0.0.4
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | Yes                 | 98.240.255.102       |
+| Web1     | No                  | 10.0.0.4             |
+| Web2     | No                  | 10.0.0.4             |
+| Web3     | No                  | 10.0.0.4             |
+| Elk-Box  | Yes                 | 98.240.255.102       |
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+- What is the main advantage of automating configuration with Ansible?
+Allows for easier cloud application deployment, configuration and provisioning.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+Install Docker.io
+Installs pip3
+Installs Docker Python Modules
+Downloads and launch docker web container
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -105,10 +110,13 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+10.0.0.7
+10.0.0.8
+10.0.0.9
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+Filebeat
+Microbeat
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
