@@ -1,2 +1,0 @@
-# Cloud-Infrastucture
-Cloud Infrastructure
